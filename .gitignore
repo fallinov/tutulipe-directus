@@ -17,6 +17,9 @@ dist/
 # Playwright
 playwright/
 
+# Claude Code (contient des credentials MCP)
+.claude/settings.json
+
 # IDE
 .idea/
 .vscode/
