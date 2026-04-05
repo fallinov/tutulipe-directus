@@ -1,0 +1,61 @@
+# Tutulipe — Directus 11 + PostgreSQL 16
+# Usage : docker compose up -d → http://localhost:8055
+
+services:
+  # Base de données PostgreSQL
+  database:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER:-directus}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-directus-dev-password}
+      POSTGRES_DB: ${DB_DATABASE:-tutulipe}
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${DB_USER:-directus}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Directus 11
+  directus:
+    image: directus/directus:11
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8055}:8055"
+    volumes:
+      - ./uploads:/directus/uploads
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      # Sécurité
+      SECRET: ${DIRECTUS_SECRET:-dev-secret-a-changer-en-production}
+
+      # Base de données PostgreSQL
+      DB_CLIENT: pg
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_DATABASE: ${DB_DATABASE:-tutulipe}
+      DB_USER: ${DB_USER:-directus}
+      DB_PASSWORD: ${DB_PASSWORD:-directus-dev-password}
+
+      # Admin initial (première exécution uniquement)
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@tutulipe.ch}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin-dev-123}
+
+      # URL publique
+      PUBLIC_URL: ${PUBLIC_URL:-http://localhost:8055}
+
+      # CORS — autoriser le frontend Nuxt
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:3000}
+
+      # Logs
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LOG_STYLE: pretty
+
+volumes:
+  postgres_data:
