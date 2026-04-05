@@ -49,6 +49,9 @@ export default defineNuxtConfig({
       directus: {
         name: 'directus',
         provider: '~/providers/directus-image.ts',
+        options: {
+          baseURL: process.env.DIRECTUS_URL || 'http://localhost:8055',
+        },
       },
     },
   },
