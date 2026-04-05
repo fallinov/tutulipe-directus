@@ -1,0 +1,2162 @@
+{
+  "version": 1,
+  "directus": "11.17.1",
+  "vendor": "postgres",
+  "collections": [
+    {
+      "collection": "articles",
+      "meta": {
+        "accountability": "all",
+        "archive_app_filter": true,
+        "archive_field": null,
+        "archive_value": null,
+        "collapse": "open",
+        "collection": "articles",
+        "color": null,
+        "display_template": "{{titre}}",
+        "group": null,
+        "hidden": false,
+        "icon": "newspaper",
+        "item_duplication_fields": null,
+        "note": "Articles du blog",
+        "preview_url": null,
+        "singleton": false,
+        "sort": null,
+        "sort_field": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Articles"
+          }
+        ],
+        "unarchive_value": null,
+        "versioning": true
+      },
+      "schema": {
+        "name": "articles"
+      }
+    },
+    {
+      "collection": "pages",
+      "meta": {
+        "accountability": "all",
+        "archive_app_filter": true,
+        "archive_field": null,
+        "archive_value": null,
+        "collapse": "open",
+        "collection": "pages",
+        "color": null,
+        "display_template": "{{titre}}",
+        "group": null,
+        "hidden": false,
+        "icon": "article",
+        "item_duplication_fields": null,
+        "note": "Pages statiques du site (à propos, contact, etc.)",
+        "preview_url": null,
+        "singleton": false,
+        "sort": null,
+        "sort_field": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Pages"
+          }
+        ],
+        "unarchive_value": null,
+        "versioning": true
+      },
+      "schema": {
+        "name": "pages"
+      }
+    },
+    {
+      "collection": "parametres_site",
+      "meta": {
+        "accountability": "all",
+        "archive_app_filter": true,
+        "archive_field": null,
+        "archive_value": null,
+        "collapse": "open",
+        "collection": "parametres_site",
+        "color": null,
+        "display_template": "{{nom_du_site}}",
+        "group": null,
+        "hidden": false,
+        "icon": "settings",
+        "item_duplication_fields": null,
+        "note": "Configuration générale du site",
+        "preview_url": null,
+        "singleton": true,
+        "sort": null,
+        "sort_field": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Paramètres du site"
+          }
+        ],
+        "unarchive_value": null,
+        "versioning": false
+      },
+      "schema": {
+        "name": "parametres_site"
+      }
+    },
+    {
+      "collection": "produits",
+      "meta": {
+        "accountability": "all",
+        "archive_app_filter": true,
+        "archive_field": null,
+        "archive_value": null,
+        "collapse": "open",
+        "collection": "produits",
+        "color": null,
+        "display_template": "{{nom}} — {{prix}} CHF",
+        "group": null,
+        "hidden": false,
+        "icon": "local_florist",
+        "item_duplication_fields": null,
+        "note": "Catalogue de produits",
+        "preview_url": null,
+        "singleton": false,
+        "sort": null,
+        "sort_field": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Produits"
+          }
+        ],
+        "unarchive_value": null,
+        "versioning": true
+      },
+      "schema": {
+        "name": "produits"
+      }
+    }
+  ],
+  "fields": [
+    {
+      "collection": "articles",
+      "field": "id",
+      "type": "integer",
+      "meta": {
+        "collection": "articles",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "id",
+        "group": null,
+        "hidden": true,
+        "interface": "input",
+        "note": null,
+        "options": null,
+        "readonly": true,
+        "required": false,
+        "searchable": true,
+        "sort": 1,
+        "special": [
+          "auto-increment"
+        ],
+        "translations": null,
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "id",
+        "table": "articles",
+        "data_type": "integer",
+        "default_value": "nextval('articles_id_seq'::regclass)",
+        "max_length": null,
+        "numeric_precision": 32,
+        "numeric_scale": 0,
+        "is_nullable": false,
+        "is_unique": true,
+        "is_indexed": false,
+        "is_primary_key": true,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": true,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "articles",
+      "field": "groupe_contenu",
+      "type": "alias",
+      "meta": {
+        "collection": "articles",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "groupe_contenu",
+        "group": null,
+        "hidden": false,
+        "interface": "group-accordion",
+        "note": null,
+        "options": {
+          "start": "open"
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 2,
+        "special": [
+          "alias",
+          "no-data",
+          "group"
+        ],
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Contenu"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      }
+    },
+    {
+      "collection": "articles",
+      "field": "groupe_publication",
+      "type": "alias",
+      "meta": {
+        "collection": "articles",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "groupe_publication",
+        "group": null,
+        "hidden": false,
+        "interface": "group-accordion",
+        "note": null,
+        "options": {
+          "start": "open"
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 3,
+        "special": [
+          "alias",
+          "no-data",
+          "group"
+        ],
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Publication"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      }
+    },
+    {
+      "collection": "articles",
+      "field": "groupe_seo",
+      "type": "alias",
+      "meta": {
+        "collection": "articles",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "groupe_seo",
+        "group": null,
+        "hidden": false,
+        "interface": "group-accordion",
+        "note": null,
+        "options": {
+          "start": "open"
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 4,
+        "special": [
+          "alias",
+          "no-data",
+          "group"
+        ],
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "SEO"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      }
+    },
+    {
+      "collection": "articles",
+      "field": "titre",
+      "type": "string",
+      "meta": {
+        "collection": "articles",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "titre",
+        "group": "groupe_contenu",
+        "hidden": false,
+        "interface": "input",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": true,
+        "searchable": true,
+        "sort": 1,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Titre"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "titre",
+        "table": "articles",
+        "data_type": "character varying",
+        "default_value": null,
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": false,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "articles",
+      "field": "image",
+      "type": "uuid",
+      "meta": {
+        "collection": "articles",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "image",
+        "group": "groupe_contenu",
+        "hidden": false,
+        "interface": "file-image",
+        "note": "📸 Format recommandé : JPG ou WebP, minimum 1200×800px. L'image sera automatiquement redimensionnée.",
+        "options": {
+          "accept_mime_types": [
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+          ]
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 2,
+        "special": [
+          "file"
+        ],
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Image principale"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "image",
+        "table": "articles",
+        "data_type": "uuid",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": "directus_files",
+        "foreign_key_column": "id"
+      }
+    },
+    {
+      "collection": "articles",
+      "field": "contenu",
+      "type": "text",
+      "meta": {
+        "collection": "articles",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "contenu",
+        "group": "groupe_contenu",
+        "hidden": false,
+        "interface": "input-rich-text-html",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 3,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Contenu"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "contenu",
+        "table": "articles",
+        "data_type": "text",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "articles",
+      "field": "statut",
+      "type": "string",
+      "meta": {
+        "collection": "articles",
+        "conditions": null,
+        "display": "labels",
+        "display_options": {
+          "choices": [
+            {
+              "background": "#2ECB71",
+              "foreground": "#FFFFFF",
+              "text": "Publié",
+              "value": "published"
+            },
+            {
+              "background": "#95A5A5",
+              "foreground": "#FFFFFF",
+              "text": "Brouillon",
+              "value": "draft"
+            }
+          ]
+        },
+        "field": "statut",
+        "group": "groupe_publication",
+        "hidden": false,
+        "interface": "select-dropdown",
+        "note": "📌 Publié = visible sur le site. Brouillon = visible uniquement dans l'administration.",
+        "options": {
+          "choices": [
+            {
+              "text": "Publié",
+              "value": "published"
+            },
+            {
+              "text": "Brouillon",
+              "value": "draft"
+            }
+          ]
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 1,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Statut"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "statut",
+        "table": "articles",
+        "data_type": "character varying",
+        "default_value": "draft",
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": false,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "articles",
+      "field": "date_publication",
+      "type": "timestamp",
+      "meta": {
+        "collection": "articles",
+        "conditions": [
+          {
+            "hidden": false,
+            "rule": {
+              "_and": [
+                {
+                  "statut": {
+                    "_eq": "published"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "hidden": true,
+            "rule": {
+              "_and": [
+                {
+                  "statut": {
+                    "_neq": "published"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "display": null,
+        "display_options": null,
+        "field": "date_publication",
+        "group": "groupe_publication",
+        "hidden": false,
+        "interface": "datetime",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 2,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Date de publication"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "date_publication",
+        "table": "articles",
+        "data_type": "timestamp with time zone",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "articles",
+      "field": "slug",
+      "type": "string",
+      "meta": {
+        "collection": "articles",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "slug",
+        "group": "groupe_publication",
+        "hidden": false,
+        "interface": "input",
+        "note": "⚠️ Généré automatiquement depuis le titre. Ne modifier que si vous savez ce que vous faites — cela change l'URL de l'article.",
+        "options": {
+          "slug": true
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 3,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Identifiant URL"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "slug",
+        "table": "articles",
+        "data_type": "character varying",
+        "default_value": null,
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": false,
+        "is_unique": true,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "articles",
+      "field": "meta_description",
+      "type": "text",
+      "meta": {
+        "collection": "articles",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "meta_description",
+        "group": "groupe_seo",
+        "hidden": false,
+        "interface": "input-multiline",
+        "note": "Maximum 160 caractères — utilisé par les moteurs de recherche.",
+        "options": {
+          "trim": true
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 1,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Description SEO"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "meta_description",
+        "table": "articles",
+        "data_type": "text",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "pages",
+      "field": "id",
+      "type": "integer",
+      "meta": {
+        "collection": "pages",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "id",
+        "group": null,
+        "hidden": true,
+        "interface": "input",
+        "note": null,
+        "options": null,
+        "readonly": true,
+        "required": false,
+        "searchable": true,
+        "sort": 1,
+        "special": [
+          "auto-increment"
+        ],
+        "translations": null,
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "id",
+        "table": "pages",
+        "data_type": "integer",
+        "default_value": "nextval('pages_id_seq'::regclass)",
+        "max_length": null,
+        "numeric_precision": 32,
+        "numeric_scale": 0,
+        "is_nullable": false,
+        "is_unique": true,
+        "is_indexed": false,
+        "is_primary_key": true,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": true,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "pages",
+      "field": "titre",
+      "type": "string",
+      "meta": {
+        "collection": "pages",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "titre",
+        "group": null,
+        "hidden": false,
+        "interface": "input",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": true,
+        "searchable": true,
+        "sort": 2,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Titre de la page"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "titre",
+        "table": "pages",
+        "data_type": "character varying",
+        "default_value": null,
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": false,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "pages",
+      "field": "slug",
+      "type": "string",
+      "meta": {
+        "collection": "pages",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "slug",
+        "group": null,
+        "hidden": false,
+        "interface": "input",
+        "note": "⚠️ Identifiant URL de la page. Ne pas modifier — utilisé par le site pour trouver la page.",
+        "options": {
+          "slug": true
+        },
+        "readonly": true,
+        "required": false,
+        "searchable": true,
+        "sort": 3,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Identifiant URL"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "slug",
+        "table": "pages",
+        "data_type": "character varying",
+        "default_value": null,
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": false,
+        "is_unique": true,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "pages",
+      "field": "contenu",
+      "type": "text",
+      "meta": {
+        "collection": "pages",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "contenu",
+        "group": null,
+        "hidden": false,
+        "interface": "input-rich-text-html",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 4,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Contenu"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "contenu",
+        "table": "pages",
+        "data_type": "text",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "pages",
+      "field": "meta_description",
+      "type": "text",
+      "meta": {
+        "collection": "pages",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "meta_description",
+        "group": null,
+        "hidden": false,
+        "interface": "input-multiline",
+        "note": "Maximum 160 caractères — utilisé par les moteurs de recherche.",
+        "options": {
+          "trim": true
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 5,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Description SEO"
+          }
+        ],
+        "validation": {
+          "_and": [
+            {
+              "_or": [
+                {
+                  "meta_description": {
+                    "_null": true
+                  }
+                },
+                {
+                  "meta_description": {
+                    "_regex": "^.{0,160}$"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "meta_description",
+        "table": "pages",
+        "data_type": "text",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "pages",
+      "field": "statut",
+      "type": "string",
+      "meta": {
+        "collection": "pages",
+        "conditions": null,
+        "display": "labels",
+        "display_options": {
+          "choices": [
+            {
+              "background": "#2ECB71",
+              "foreground": "#FFFFFF",
+              "text": "Publié",
+              "value": "published"
+            },
+            {
+              "background": "#95A5A5",
+              "foreground": "#FFFFFF",
+              "text": "Brouillon",
+              "value": "draft"
+            }
+          ]
+        },
+        "field": "statut",
+        "group": null,
+        "hidden": false,
+        "interface": "select-dropdown",
+        "note": "📌 Publié = visible sur le site. Brouillon = visible uniquement dans l'administration.",
+        "options": {
+          "choices": [
+            {
+              "text": "Publié",
+              "value": "published"
+            },
+            {
+              "text": "Brouillon",
+              "value": "draft"
+            }
+          ]
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 6,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Statut"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "statut",
+        "table": "pages",
+        "data_type": "character varying",
+        "default_value": "draft",
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": false,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "parametres_site",
+      "field": "id",
+      "type": "integer",
+      "meta": {
+        "collection": "parametres_site",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "id",
+        "group": null,
+        "hidden": true,
+        "interface": "input",
+        "note": null,
+        "options": null,
+        "readonly": true,
+        "required": false,
+        "searchable": true,
+        "sort": 1,
+        "special": [
+          "auto-increment"
+        ],
+        "translations": null,
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "id",
+        "table": "parametres_site",
+        "data_type": "integer",
+        "default_value": "nextval('parametres_site_id_seq'::regclass)",
+        "max_length": null,
+        "numeric_precision": 32,
+        "numeric_scale": 0,
+        "is_nullable": false,
+        "is_unique": true,
+        "is_indexed": false,
+        "is_primary_key": true,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": true,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "parametres_site",
+      "field": "nom_du_site",
+      "type": "string",
+      "meta": {
+        "collection": "parametres_site",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "nom_du_site",
+        "group": null,
+        "hidden": false,
+        "interface": "input",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 2,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Nom du site"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "nom_du_site",
+        "table": "parametres_site",
+        "data_type": "character varying",
+        "default_value": null,
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "parametres_site",
+      "field": "slogan",
+      "type": "string",
+      "meta": {
+        "collection": "parametres_site",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "slogan",
+        "group": null,
+        "hidden": false,
+        "interface": "input",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 3,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Slogan"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "slogan",
+        "table": "parametres_site",
+        "data_type": "character varying",
+        "default_value": null,
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "parametres_site",
+      "field": "description",
+      "type": "text",
+      "meta": {
+        "collection": "parametres_site",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "description",
+        "group": null,
+        "hidden": false,
+        "interface": "input-multiline",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 4,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Description"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "description",
+        "table": "parametres_site",
+        "data_type": "text",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "parametres_site",
+      "field": "logo",
+      "type": "uuid",
+      "meta": {
+        "collection": "parametres_site",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "logo",
+        "group": null,
+        "hidden": false,
+        "interface": "file-image",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 5,
+        "special": [
+          "file"
+        ],
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Logo"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "logo",
+        "table": "parametres_site",
+        "data_type": "uuid",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": "directus_files",
+        "foreign_key_column": "id"
+      }
+    },
+    {
+      "collection": "parametres_site",
+      "field": "telephone",
+      "type": "string",
+      "meta": {
+        "collection": "parametres_site",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "telephone",
+        "group": null,
+        "hidden": false,
+        "interface": "input",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 6,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Téléphone"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "telephone",
+        "table": "parametres_site",
+        "data_type": "character varying",
+        "default_value": null,
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "parametres_site",
+      "field": "email",
+      "type": "string",
+      "meta": {
+        "collection": "parametres_site",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "email",
+        "group": null,
+        "hidden": false,
+        "interface": "input",
+        "note": null,
+        "options": {
+          "type": "email"
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 7,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "E-mail"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "email",
+        "table": "parametres_site",
+        "data_type": "character varying",
+        "default_value": null,
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "parametres_site",
+      "field": "adresse",
+      "type": "text",
+      "meta": {
+        "collection": "parametres_site",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "adresse",
+        "group": null,
+        "hidden": false,
+        "interface": "input-multiline",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 8,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Adresse"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "adresse",
+        "table": "parametres_site",
+        "data_type": "text",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "parametres_site",
+      "field": "couleur_principale",
+      "type": "string",
+      "meta": {
+        "collection": "parametres_site",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "couleur_principale",
+        "group": null,
+        "hidden": false,
+        "interface": "select-color",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 9,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Couleur principale"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "couleur_principale",
+        "table": "parametres_site",
+        "data_type": "character varying",
+        "default_value": null,
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "parametres_site",
+      "field": "services",
+      "type": "json",
+      "meta": {
+        "collection": "parametres_site",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "services",
+        "group": null,
+        "hidden": false,
+        "interface": "list",
+        "note": "🌸 Services affichés sur la page d'accueil. Ajouter, supprimer ou réordonner librement.",
+        "options": {
+          "fields": [
+            {
+              "field": "titre",
+              "meta": {
+                "interface": "input",
+                "required": true,
+                "width": "half"
+              },
+              "name": "Titre",
+              "type": "string"
+            },
+            {
+              "field": "description",
+              "meta": {
+                "interface": "input-multiline",
+                "width": "half"
+              },
+              "name": "Description",
+              "type": "text"
+            },
+            {
+              "field": "icone",
+              "meta": {
+                "interface": "select-icon",
+                "note": "Choisir une icône représentant le service",
+                "width": "half"
+              },
+              "name": "Icône",
+              "type": "string"
+            }
+          ]
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 10,
+        "special": [
+          "cast-json"
+        ],
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Services"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "services",
+        "table": "parametres_site",
+        "data_type": "json",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "produits",
+      "field": "id",
+      "type": "integer",
+      "meta": {
+        "collection": "produits",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "id",
+        "group": null,
+        "hidden": true,
+        "interface": "input",
+        "note": null,
+        "options": null,
+        "readonly": true,
+        "required": false,
+        "searchable": true,
+        "sort": 1,
+        "special": [
+          "auto-increment"
+        ],
+        "translations": null,
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "id",
+        "table": "produits",
+        "data_type": "integer",
+        "default_value": "nextval('produits_id_seq'::regclass)",
+        "max_length": null,
+        "numeric_precision": 32,
+        "numeric_scale": 0,
+        "is_nullable": false,
+        "is_unique": true,
+        "is_indexed": false,
+        "is_primary_key": true,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": true,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "produits",
+      "field": "nom",
+      "type": "string",
+      "meta": {
+        "collection": "produits",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "nom",
+        "group": null,
+        "hidden": false,
+        "interface": "input",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": true,
+        "searchable": true,
+        "sort": 2,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Nom du produit"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "nom",
+        "table": "produits",
+        "data_type": "character varying",
+        "default_value": null,
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": false,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "produits",
+      "field": "slug",
+      "type": "string",
+      "meta": {
+        "collection": "produits",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "slug",
+        "group": null,
+        "hidden": false,
+        "interface": "input",
+        "note": "⚠️ Généré automatiquement depuis le nom. Ne modifier que si nécessaire — cela change l'URL du produit.",
+        "options": {
+          "slug": true
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 3,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Identifiant URL"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "slug",
+        "table": "produits",
+        "data_type": "character varying",
+        "default_value": null,
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": false,
+        "is_unique": true,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "produits",
+      "field": "description",
+      "type": "text",
+      "meta": {
+        "collection": "produits",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "description",
+        "group": null,
+        "hidden": false,
+        "interface": "input-rich-text-html",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 4,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Description"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "description",
+        "table": "produits",
+        "data_type": "text",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "produits",
+      "field": "prix",
+      "type": "decimal",
+      "meta": {
+        "collection": "produits",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "prix",
+        "group": null,
+        "hidden": false,
+        "interface": "input",
+        "note": "💰 Prix en francs suisses (CHF). Utiliser un point pour les centimes (ex: 35.50).",
+        "options": {
+          "min": 0,
+          "step": 0.05
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 5,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Prix (CHF)"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "prix",
+        "table": "produits",
+        "data_type": "numeric",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": 10,
+        "numeric_scale": 2,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "produits",
+      "field": "image",
+      "type": "uuid",
+      "meta": {
+        "collection": "produits",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "image",
+        "group": null,
+        "hidden": false,
+        "interface": "file-image",
+        "note": "📸 Format recommandé : JPG ou WebP, minimum 1200×800px.",
+        "options": {
+          "accept_mime_types": [
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+          ]
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 6,
+        "special": [
+          "file"
+        ],
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Image principale"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "image",
+        "table": "produits",
+        "data_type": "uuid",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": "directus_files",
+        "foreign_key_column": "id"
+      }
+    },
+    {
+      "collection": "produits",
+      "field": "categorie",
+      "type": "string",
+      "meta": {
+        "collection": "produits",
+        "conditions": null,
+        "display": "labels",
+        "display_options": null,
+        "field": "categorie",
+        "group": null,
+        "hidden": false,
+        "interface": "select-dropdown",
+        "note": null,
+        "options": {
+          "choices": [
+            {
+              "text": "Bouquets",
+              "value": "bouquets"
+            },
+            {
+              "text": "Plantes",
+              "value": "plantes"
+            },
+            {
+              "text": "Accessoires",
+              "value": "accessoires"
+            }
+          ]
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 7,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Catégorie"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "categorie",
+        "table": "produits",
+        "data_type": "character varying",
+        "default_value": null,
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "produits",
+      "field": "en_stock",
+      "type": "boolean",
+      "meta": {
+        "collection": "produits",
+        "conditions": [
+          {
+            "hidden": false,
+            "rule": {
+              "_and": [
+                {
+                  "statut": {
+                    "_eq": "published"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "hidden": true,
+            "rule": {
+              "_and": [
+                {
+                  "statut": {
+                    "_neq": "published"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "display": null,
+        "display_options": null,
+        "field": "en_stock",
+        "group": null,
+        "hidden": false,
+        "interface": "boolean",
+        "note": "Décocher pour afficher «Rupture de stock» sur le site.",
+        "options": null,
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 8,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "En stock"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "en_stock",
+        "table": "produits",
+        "data_type": "boolean",
+        "default_value": true,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": false,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
+      "collection": "produits",
+      "field": "statut",
+      "type": "string",
+      "meta": {
+        "collection": "produits",
+        "conditions": null,
+        "display": "labels",
+        "display_options": {
+          "choices": [
+            {
+              "background": "#2ECB71",
+              "foreground": "#FFFFFF",
+              "text": "Publié",
+              "value": "published"
+            },
+            {
+              "background": "#95A5A5",
+              "foreground": "#FFFFFF",
+              "text": "Brouillon",
+              "value": "draft"
+            }
+          ]
+        },
+        "field": "statut",
+        "group": null,
+        "hidden": false,
+        "interface": "select-dropdown",
+        "note": "📌 Publié = visible sur le site. Brouillon = visible uniquement dans l'administration.",
+        "options": {
+          "choices": [
+            {
+              "text": "Publié",
+              "value": "published"
+            },
+            {
+              "text": "Brouillon",
+              "value": "draft"
+            }
+          ]
+        },
+        "readonly": false,
+        "required": false,
+        "searchable": true,
+        "sort": 9,
+        "special": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Statut"
+          }
+        ],
+        "validation": null,
+        "validation_message": null,
+        "width": "half"
+      },
+      "schema": {
+        "name": "statut",
+        "table": "produits",
+        "data_type": "character varying",
+        "default_value": "draft",
+        "max_length": 255,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": false,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    }
+  ],
+  "systemFields": [],
+  "relations": [
+    {
+      "collection": "articles",
+      "field": "image",
+      "related_collection": "directus_files",
+      "meta": {
+        "junction_field": null,
+        "many_collection": "articles",
+        "many_field": "image",
+        "one_allowed_collections": null,
+        "one_collection": "directus_files",
+        "one_collection_field": null,
+        "one_deselect_action": "nullify",
+        "one_field": null,
+        "sort_field": null
+      },
+      "schema": {
+        "table": "articles",
+        "column": "image",
+        "foreign_key_table": "directus_files",
+        "foreign_key_column": "id",
+        "constraint_name": "articles_image_foreign",
+        "on_update": "NO ACTION",
+        "on_delete": "SET NULL"
+      }
+    },
+    {
+      "collection": "parametres_site",
+      "field": "logo",
+      "related_collection": "directus_files",
+      "meta": {
+        "junction_field": null,
+        "many_collection": "parametres_site",
+        "many_field": "logo",
+        "one_allowed_collections": null,
+        "one_collection": "directus_files",
+        "one_collection_field": null,
+        "one_deselect_action": "nullify",
+        "one_field": null,
+        "sort_field": null
+      },
+      "schema": {
+        "table": "parametres_site",
+        "column": "logo",
+        "foreign_key_table": "directus_files",
+        "foreign_key_column": "id",
+        "constraint_name": "parametres_site_logo_foreign",
+        "on_update": "NO ACTION",
+        "on_delete": "SET NULL"
+      }
+    },
+    {
+      "collection": "produits",
+      "field": "image",
+      "related_collection": "directus_files",
+      "meta": {
+        "junction_field": null,
+        "many_collection": "produits",
+        "many_field": "image",
+        "one_allowed_collections": null,
+        "one_collection": "directus_files",
+        "one_collection_field": null,
+        "one_deselect_action": "nullify",
+        "one_field": null,
+        "sort_field": null
+      },
+      "schema": {
+        "table": "produits",
+        "column": "image",
+        "foreign_key_table": "directus_files",
+        "foreign_key_column": "id",
+        "constraint_name": "produits_image_foreign",
+        "on_update": "NO ACTION",
+        "on_delete": "SET NULL"
+      }
+    }
+  ]
+}

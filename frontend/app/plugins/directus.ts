@@ -41,6 +41,12 @@ export interface Produit {
   statut: 'published' | 'draft'
 }
 
+export interface Service {
+  titre: string
+  description: string | null
+  icone: string | null
+}
+
 export interface ParametresSite {
   id: number
   nom_du_site: string | null
@@ -51,6 +57,7 @@ export interface ParametresSite {
   email: string | null
   adresse: string | null
   couleur_principale: string | null
+  services: Service[] | null
 }
 
 export interface DirectusSchema {

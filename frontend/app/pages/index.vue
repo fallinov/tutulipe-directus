@@ -52,6 +52,38 @@ const { data: produits } = await useAsyncData('accueil-produits', () =>
       </UContainer>
     </section>
 
+    <!-- Services -->
+    <section v-if="settings?.services?.length" class="py-16">
+      <UContainer>
+        <h2 class="font-heading text-4xl text-center text-brown-900 mb-10">
+          Nos services
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            v-for="(service, index) in settings.services"
+            :key="index"
+            class="text-center p-6"
+          >
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-lavender-50 flex items-center justify-center">
+              <UIcon
+                :name="`i-lucide-${service.icone || 'star'}`"
+                class="text-2xl text-lavender-500"
+              />
+            </div>
+            <h3
+              class="font-heading text-2xl text-brown-900 mb-2"
+              :data-directus="$setAttr({ collection: 'parametres_site', item: settings?.id, fields: 'services', mode: 'drawer' })"
+            >
+              {{ service.titre }}
+            </h3>
+            <p v-if="service.description" class="text-brown-600">
+              {{ service.description }}
+            </p>
+          </div>
+        </div>
+      </UContainer>
+    </section>
+
     <!-- Articles récents -->
     <section v-if="articles?.length" class="py-16">
       <UContainer>

@@ -15,6 +15,11 @@ test.describe('Tutulipe — Navigation et contenu', () => {
     // Section produits
     await expect(page.getByRole('heading', { name: 'Nos créations' })).toBeVisible()
 
+    // Section services
+    await expect(page.getByRole('heading', { name: 'Nos services' })).toBeVisible()
+    await expect(page.getByText('Bouquets sur mesure')).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Livraison' })).toBeVisible()
+
     // Section CTA
     await expect(page.getByRole('heading', { name: 'Envie d\'une composition sur mesure' })).toBeVisible()
 
