@@ -49,7 +49,7 @@ const categorieLabels: Record<string, string> = {
 
     <div class="flex items-center justify-between">
       <p v-if="produit.prix" class="text-lg font-semibold text-terracotta-500">
-        {{ produit.prix.toFixed(2) }} CHF
+        {{ Number(produit.prix).toFixed(2) }} CHF
       </p>
       <UBadge
         v-if="!produit.en_stock"

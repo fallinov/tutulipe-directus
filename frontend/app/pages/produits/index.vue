@@ -40,17 +40,19 @@ const produitsFiltres = computed(() => {
         </h1>
 
         <!-- Filtres -->
-        <div class="flex justify-center mb-10">
-          <UButtonGroup>
-            <UButton
-              v-for="cat in categories"
-              :key="cat.value"
-              :label="cat.label"
-              :variant="categorieActive === cat.value ? 'solid' : 'outline'"
-              color="primary"
-              @click="categorieActive = cat.value"
-            />
-          </UButtonGroup>
+        <div class="flex flex-wrap justify-center gap-2 mb-10">
+          <button
+            v-for="cat in categories"
+            :key="cat.value"
+            type="button"
+            class="px-4 py-2 rounded-lg font-medium transition-colors"
+            :class="categorieActive === cat.value
+              ? 'bg-lavender-500 text-white'
+              : 'bg-white text-brown-700 border border-brown-200 hover:border-lavender-300'"
+            @click="categorieActive = cat.value"
+          >
+            {{ cat.label }}
+          </button>
         </div>
 
         <!-- Grille produits -->

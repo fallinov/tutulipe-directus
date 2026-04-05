@@ -77,7 +77,7 @@ const categorieLabels: Record<string, string> = {
 
         <!-- Prix -->
         <p v-if="produit!.prix" class="text-2xl font-semibold text-terracotta-500 mb-8">
-          {{ produit!.prix.toFixed(2) }} CHF
+          {{ Number(produit!.prix).toFixed(2) }} CHF
         </p>
 
         <!-- Description -->

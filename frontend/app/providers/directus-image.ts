@@ -1,7 +1,7 @@
 import { joinURL } from 'ufo'
 import type { ProviderGetImageOptions } from '@nuxt/image'
 
-export function getImage(
+function getImage(
   src: string,
   { modifiers = {} }: ProviderGetImageOptions,
   { options: { baseURL } }: { options: { baseURL: string } },
@@ -22,6 +22,6 @@ export function getImage(
   }
 }
 
-export function validateDomains() {
-  return true
+export default {
+  getImage,
 }
