@@ -1,0 +1,131 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/*
+ * Polices locales — AUCUN appel CDN
+ */
+
+/* Dancing Script — Titres */
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/dancing-script/DancingScript-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/dancing-script/DancingScript-Bold.woff2') format('woff2');
+}
+
+/* Open Sans — Corps */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/open-sans/OpenSans-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/open-sans/OpenSans-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/open-sans/OpenSans-Bold.woff2') format('woff2');
+}
+
+/*
+ * Palette Tutulipe — couleurs custom pour Nuxt UI
+ */
+@theme {
+  /* Lavender — primary */
+  --color-lavender-50: #f0f4fb;
+  --color-lavender-100: #dce5f5;
+  --color-lavender-200: #c1d0ed;
+  --color-lavender-300: #9bb3db;
+  --color-lavender-400: #7a96c9;
+  --color-lavender-500: #5f7db8;
+  --color-lavender-600: #4d66a0;
+  --color-lavender-700: #3f5283;
+  --color-lavender-800: #37466d;
+  --color-lavender-900: #2f3b5a;
+  --color-lavender-950: #1e2639;
+
+  /* Olive — secondary */
+  --color-olive-50: #f7f8e8;
+  --color-olive-100: #ecefcc;
+  --color-olive-200: #d9e09d;
+  --color-olive-300: #c0cb62;
+  --color-olive-400: #a8b434;
+  --color-olive-500: #8a9a1e;
+  --color-olive-600: #6d7400;
+  --color-olive-700: #565c08;
+  --color-olive-800: #454a0d;
+  --color-olive-900: #3a3f10;
+  --color-olive-950: #1f2205;
+
+  /* Peach — accent */
+  --color-peach-50: #fff6ed;
+  --color-peach-100: #ffebd4;
+  --color-peach-200: #ffd3a9;
+  --color-peach-300: #f5ac6d;
+  --color-peach-400: #f09243;
+  --color-peach-500: #ec7a22;
+  --color-peach-600: #dd6118;
+  --color-peach-700: #b74916;
+  --color-peach-800: #923a1a;
+  --color-peach-900: #763218;
+  --color-peach-950: #40170a;
+
+  /* Terracotta */
+  --color-terracotta-50: #fdf4f2;
+  --color-terracotta-100: #fce7e2;
+  --color-terracotta-200: #fad3ca;
+  --color-terracotta-300: #f5b3a5;
+  --color-terracotta-400: #ec8a74;
+  --color-terracotta-500: #d67057;
+  --color-terracotta-600: #c35840;
+  --color-terracotta-700: #a44733;
+  --color-terracotta-800: #883e2f;
+  --color-terracotta-900: #71382c;
+  --color-terracotta-950: #3d1a13;
+
+  /* Brown — neutral */
+  --color-brown-50: #faf5f4;
+  --color-brown-100: #f3e9e8;
+  --color-brown-200: #e9d5d3;
+  --color-brown-300: #d9b7b4;
+  --color-brown-400: #c3908c;
+  --color-brown-500: #a96f6a;
+  --color-brown-600: #8f5752;
+  --color-brown-700: #774744;
+  --color-brown-800: #643d3b;
+  --color-brown-900: #553736;
+  --color-brown-950: #3b2523;
+
+  /* Fonts */
+  --font-heading: 'Dancing Script', cursive;
+  --font-body: 'Open Sans', sans-serif;
+}
+
+/*
+ * Appliquer les polices globalement
+ */
+body {
+  font-family: var(--font-body);
+  color: var(--color-brown-950);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
