@@ -6,16 +6,18 @@ Site vitrine pour un fleuriste fictif. Architecture headless CMS (Directus 11) +
 
 | Service | Technologie | Rôle |
 |---------|------------|------|
-| **CMS** | Directus 11 + PostgreSQL 16 | API REST + interface d'administration |
+| **CMS** | Directus 11 + PostgreSQL 16 | API REST + admin + Visual Editor |
 | **Frontend** | Nuxt 4 + Nuxt UI v4 | Site statique (SSG) |
 | **Images** | @nuxt/image + provider Directus | Optimisation et transformation |
+| **Visual Editor** | @directus/visual-editing | Édition in-place du contenu |
 | **Polices** | @nuxt/fonts (locales) | Dancing Script + Open Sans |
+| **Tests** | Playwright | 12 tests e2e |
 
 ## Démarrage rapide
 
 ### Prérequis
 
-- Docker + Docker Compose
+- Docker / Podman + Compose
 - Node.js 22+
 - npm
 
@@ -23,7 +25,7 @@ Site vitrine pour un fleuriste fictif. Architecture headless CMS (Directus 11) +
 
 ```bash
 cd directus
-docker compose up -d
+docker compose up -d       # ou : podman-compose up -d
 ```
 
 Directus est accessible sur **http://localhost:8055**
@@ -33,7 +35,12 @@ Directus est accessible sur **http://localhost:8055**
 #### Appliquer le schéma
 
 ```bash
-docker compose exec directus npx directus schema apply /directus/snapshot.yaml
+# Docker
+docker compose exec directus npx directus schema apply /directus/snapshot.json --yes
+
+# Podman
+podman cp snapshot.json directus_directus_1:/directus/snapshot.json
+podman exec directus_directus_1 npx directus schema apply /directus/snapshot.json --yes
 ```
 
 #### Configurer les permissions
@@ -58,13 +65,18 @@ npm run dev
 
 Le site est accessible sur **http://localhost:3000**
 
-### Générer le site statique
+### Tests
 
 ```bash
 cd frontend
-npm run generate
-npm run preview
+npx playwright test
 ```
+
+### Visual Editor
+
+1. Dans Directus : **Settings → Modules** → activer **Visual Editor**
+2. **Settings → Visual Editor** → ajouter l'URL `http://localhost:3000`
+3. Ouvrir le module Visual Editor → survoler et cliquer les éléments éditables
 
 ## Structure
 
@@ -72,7 +84,7 @@ npm run preview
 tutulipe-directus/
 ├── directus/
 │   ├── docker-compose.yml    # Directus 11 + PostgreSQL 16
-│   ├── snapshot.yaml         # Schéma des collections
+│   ├── snapshot.json         # Schéma exporté (collections/champs/relations)
 │   ├── seed-permissions.sh   # Rôles et permissions
 │   ├── .env.example          # Variables d'environnement
 │   └── uploads/              # Fichiers uploadés
@@ -82,9 +94,10 @@ tutulipe-directus/
     │   ├── components/       # AppHeader, AppFooter, ArticleCard, ProduitCard
     │   ├── composables/      # useDirectusImage
     │   ├── layouts/          # Layout par défaut
-    │   ├── plugins/          # Client Directus SDK
+    │   ├── plugins/          # Directus SDK + Visual Editor
+    │   ├── providers/        # Provider @nuxt/image pour Directus
     │   └── assets/css/       # Palette + polices
-    ├── providers/            # Provider @nuxt/image pour Directus
+    ├── e2e/                  # Tests Playwright
     ├── public/fonts/         # Polices locales (woff2)
     └── nuxt.config.ts        # Configuration
 ```
@@ -94,14 +107,14 @@ tutulipe-directus/
 | Collection | Type | Description |
 |------------|------|-------------|
 | `pages` | Standard | Pages statiques (à propos, contact) |
-| `articles` | Standard | Articles de blog |
+| `articles` | Standard | Articles de blog (groupes accordion) |
 | `produits` | Standard | Catalogue de produits |
-| `parametres_site` | Singleton | Configuration générale du site |
+| `parametres_site` | Singleton | Configuration du site + services (repeater) |
 
 ## Déploiement production
 
 1. Copier `directus/.env.example` → `directus/.env` et configurer les secrets
-2. Adapter `PUBLIC_URL` et `CORS_ORIGIN`
+2. Adapter `PUBLIC_URL`, `CORS_ORIGIN` (URL exacte du frontend) et `FRAME_SRC`
 3. `docker compose up -d`
 4. Appliquer le schéma et les permissions
 5. `cd frontend && npm run generate` → déployer `.output/public/`
