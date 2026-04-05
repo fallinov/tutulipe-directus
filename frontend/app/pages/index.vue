@@ -31,13 +31,13 @@ const { data: produits } = await useAsyncData('accueil-produits', () =>
       <UContainer class="relative z-10 text-center text-white">
         <h1
           class="font-heading text-5xl md:text-7xl mb-6 drop-shadow-lg"
-          :data-directus="$setAttr?.({ collection: 'parametres_site', item: settings?.id, fields: 'nom_du_site', mode: 'popover' })"
+          :data-directus="$setAttr({ collection: 'parametres_site', item: settings?.id, fields: 'nom_du_site', mode: 'popover' })"
         >
           {{ settings?.nom_du_site || 'Tutulipe' }}
         </h1>
         <p
           class="text-xl md:text-2xl mb-8 text-lavender-100 max-w-2xl mx-auto"
-          :data-directus="$setAttr?.({ collection: 'parametres_site', item: settings?.id, fields: 'slogan', mode: 'popover' })"
+          :data-directus="$setAttr({ collection: 'parametres_site', item: settings?.id, fields: 'slogan', mode: 'popover' })"
         >
           {{ settings?.slogan || 'L\'art floral au naturel' }}
         </p>

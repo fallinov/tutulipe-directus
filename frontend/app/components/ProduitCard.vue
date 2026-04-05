@@ -39,7 +39,7 @@ const categorieLabels: Record<string, string> = {
     <div class="flex items-start justify-between gap-2 mb-2">
       <h3
         class="font-heading text-2xl text-brown-900"
-        :data-directus="$setAttr?.({ collection: 'produits', item: produit.id, fields: 'nom', mode: 'popover' })"
+        :data-directus="$setAttr({ collection: 'produits', item: produit.id, fields: 'nom', mode: 'popover' })"
       >
         {{ produit.nom }}
       </h3>
@@ -56,7 +56,7 @@ const categorieLabels: Record<string, string> = {
       <p
         v-if="produit.prix"
         class="text-lg font-semibold text-terracotta-500"
-        :data-directus="$setAttr?.({ collection: 'produits', item: produit.id, fields: 'prix', mode: 'popover' })"
+        :data-directus="$setAttr({ collection: 'produits', item: produit.id, fields: 'prix', mode: 'popover' })"
       >
         {{ Number(produit.prix).toFixed(2) }} CHF
       </p>

@@ -15,13 +15,13 @@ const { data: settings } = await useAsyncData('parametres-site-footer', () =>
         <div>
           <h3
             class="font-heading text-2xl text-white mb-4"
-            :data-directus="$setAttr?.({ collection: 'parametres_site', item: settings?.id, fields: 'nom_du_site', mode: 'popover' })"
+            :data-directus="$setAttr({ collection: 'parametres_site', item: settings?.id, fields: 'nom_du_site', mode: 'popover' })"
           >
             {{ settings?.nom_du_site || 'Tutulipe' }}
           </h3>
           <p
             class="text-brown-300"
-            :data-directus="$setAttr?.({ collection: 'parametres_site', item: settings?.id, fields: 'slogan', mode: 'popover' })"
+            :data-directus="$setAttr({ collection: 'parametres_site', item: settings?.id, fields: 'slogan', mode: 'popover' })"
           >
             {{ settings?.slogan || 'L\'art floral au naturel' }}
           </p>

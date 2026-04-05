@@ -50,7 +50,7 @@ useHead({
         <!-- En-tête -->
         <h1
           class="font-heading text-5xl text-brown-900 mb-4"
-          :data-directus="$setAttr?.({ collection: 'articles', item: article!.id, fields: 'titre', mode: 'popover' })"
+          :data-directus="$setAttr({ collection: 'articles', item: article!.id, fields: 'titre', mode: 'popover' })"
         >
           {{ article!.titre }}
         </h1>
@@ -67,7 +67,7 @@ useHead({
         <div
           v-if="article!.contenu"
           class="prose prose-brown max-w-none"
-          :data-directus="$setAttr?.({ collection: 'articles', item: article!.id, fields: 'contenu', mode: 'modal' })"
+          :data-directus="$setAttr({ collection: 'articles', item: article!.id, fields: 'contenu', mode: 'modal' })"
           v-html="article!.contenu"
         />
 

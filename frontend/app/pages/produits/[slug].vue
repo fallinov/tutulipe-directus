@@ -54,7 +54,7 @@ const categorieLabels: Record<string, string> = {
         <div class="flex items-start justify-between gap-4 mb-6">
           <h1
             class="font-heading text-5xl text-brown-900"
-            :data-directus="$setAttr?.({ collection: 'produits', item: produit!.id, fields: 'nom', mode: 'popover' })"
+            :data-directus="$setAttr({ collection: 'produits', item: produit!.id, fields: 'nom', mode: 'popover' })"
           >
             {{ produit!.nom }}
           </h1>
@@ -82,7 +82,7 @@ const categorieLabels: Record<string, string> = {
         <p
           v-if="produit!.prix"
           class="text-2xl font-semibold text-terracotta-500 mb-8"
-          :data-directus="$setAttr?.({ collection: 'produits', item: produit!.id, fields: 'prix', mode: 'popover' })"
+          :data-directus="$setAttr({ collection: 'produits', item: produit!.id, fields: 'prix', mode: 'popover' })"
         >
           {{ Number(produit!.prix).toFixed(2) }} CHF
         </p>
@@ -91,7 +91,7 @@ const categorieLabels: Record<string, string> = {
         <div
           v-if="produit!.description"
           class="prose prose-brown max-w-none"
-          :data-directus="$setAttr?.({ collection: 'produits', item: produit!.id, fields: 'description', mode: 'modal' })"
+          :data-directus="$setAttr({ collection: 'produits', item: produit!.id, fields: 'description', mode: 'modal' })"
           v-html="produit!.description"
         />
 

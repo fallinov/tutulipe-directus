@@ -32,14 +32,14 @@ useHead({
       <UContainer class="max-w-3xl">
         <h1
           class="font-heading text-5xl text-brown-900 mb-8"
-          :data-directus="$setAttr?.({ collection: 'pages', item: page!.id, fields: 'titre', mode: 'popover' })"
+          :data-directus="$setAttr({ collection: 'pages', item: page!.id, fields: 'titre', mode: 'popover' })"
         >
           {{ page!.titre }}
         </h1>
         <div
           v-if="page!.contenu"
           class="prose prose-brown max-w-none"
-          :data-directus="$setAttr?.({ collection: 'pages', item: page!.id, fields: 'contenu', mode: 'modal' })"
+          :data-directus="$setAttr({ collection: 'pages', item: page!.id, fields: 'contenu', mode: 'modal' })"
           v-html="page!.contenu"
         />
       </UContainer>

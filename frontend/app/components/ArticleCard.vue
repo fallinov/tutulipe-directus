@@ -32,7 +32,7 @@ const { $setAttr } = useNuxtApp()
 
     <h3
       class="font-heading text-2xl text-brown-900 mb-2"
-      :data-directus="$setAttr?.({ collection: 'articles', item: article.id, fields: 'titre', mode: 'popover' })"
+      :data-directus="$setAttr({ collection: 'articles', item: article.id, fields: 'titre', mode: 'popover' })"
     >
       {{ article.titre }}
     </h3>
