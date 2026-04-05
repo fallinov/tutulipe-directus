@@ -1,0 +1,26 @@
+# Environnement
+.env
+!.env.example
+
+# Directus
+directus/uploads/*
+!directus/uploads/.gitkeep
+
+# Node
+node_modules/
+
+# Nuxt
+.nuxt/
+.output/
+dist/
+
+# Playwright
+playwright/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
