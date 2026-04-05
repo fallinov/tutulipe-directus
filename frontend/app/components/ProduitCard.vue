@@ -5,6 +5,8 @@ defineProps<{
   produit: Produit
 }>()
 
+const { $setAttr } = useNuxtApp()
+
 const categorieLabels: Record<string, string> = {
   bouquets: 'Bouquets',
   plantes: 'Plantes',
@@ -35,7 +37,10 @@ const categorieLabels: Record<string, string> = {
     </div>
 
     <div class="flex items-start justify-between gap-2 mb-2">
-      <h3 class="font-heading text-2xl text-brown-900">
+      <h3
+        class="font-heading text-2xl text-brown-900"
+        :data-directus="$setAttr?.({ collection: 'produits', item: produit.id, fields: 'nom', mode: 'popover' })"
+      >
         {{ produit.nom }}
       </h3>
       <UBadge
@@ -48,7 +53,11 @@ const categorieLabels: Record<string, string> = {
     </div>
 
     <div class="flex items-center justify-between">
-      <p v-if="produit.prix" class="text-lg font-semibold text-terracotta-500">
+      <p
+        v-if="produit.prix"
+        class="text-lg font-semibold text-terracotta-500"
+        :data-directus="$setAttr?.({ collection: 'produits', item: produit.id, fields: 'prix', mode: 'popover' })"
+      >
         {{ Number(produit.prix).toFixed(2) }} CHF
       </p>
       <UBadge

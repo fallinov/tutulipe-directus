@@ -4,6 +4,8 @@ import type { Article } from '~/plugins/directus'
 defineProps<{
   article: Article
 }>()
+
+const { $setAttr } = useNuxtApp()
 </script>
 
 <template>
@@ -28,7 +30,10 @@ defineProps<{
       <UIcon name="i-lucide-image" class="text-4xl text-lavender-200" />
     </div>
 
-    <h3 class="font-heading text-2xl text-brown-900 mb-2">
+    <h3
+      class="font-heading text-2xl text-brown-900 mb-2"
+      :data-directus="$setAttr?.({ collection: 'articles', item: article.id, fields: 'titre', mode: 'popover' })"
+    >
       {{ article.titre }}
     </h3>
 

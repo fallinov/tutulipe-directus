@@ -2,7 +2,7 @@
 import type { Article } from '~/plugins/directus'
 
 const route = useRoute()
-const { $directus, $readItems } = useNuxtApp()
+const { $directus, $readItems, $setAttr } = useNuxtApp()
 
 const { data: article, error } = await useAsyncData(
   `article-${route.params.slug}`,
@@ -48,7 +48,10 @@ useHead({
         />
 
         <!-- En-tête -->
-        <h1 class="font-heading text-5xl text-brown-900 mb-4">
+        <h1
+          class="font-heading text-5xl text-brown-900 mb-4"
+          :data-directus="$setAttr?.({ collection: 'articles', item: article!.id, fields: 'titre', mode: 'popover' })"
+        >
           {{ article!.titre }}
         </h1>
 
@@ -64,6 +67,7 @@ useHead({
         <div
           v-if="article!.contenu"
           class="prose prose-brown max-w-none"
+          :data-directus="$setAttr?.({ collection: 'articles', item: article!.id, fields: 'contenu', mode: 'modal' })"
           v-html="article!.contenu"
         />
 

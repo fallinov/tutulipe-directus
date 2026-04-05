@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Page } from '~/plugins/directus'
 
-const { $directus, $readItems } = useNuxtApp()
+const { $directus, $readItems, $setAttr } = useNuxtApp()
 
 const { data: page, error } = await useAsyncData('page-a-propos', async () => {
   const pages = await $directus.request($readItems<Page>('pages', {
@@ -30,12 +30,16 @@ useHead({
   <div>
     <section class="py-16">
       <UContainer class="max-w-3xl">
-        <h1 class="font-heading text-5xl text-brown-900 mb-8">
+        <h1
+          class="font-heading text-5xl text-brown-900 mb-8"
+          :data-directus="$setAttr?.({ collection: 'pages', item: page!.id, fields: 'titre', mode: 'popover' })"
+        >
           {{ page!.titre }}
         </h1>
         <div
           v-if="page!.contenu"
           class="prose prose-brown max-w-none"
+          :data-directus="$setAttr?.({ collection: 'pages', item: page!.id, fields: 'contenu', mode: 'modal' })"
           v-html="page!.contenu"
         />
       </UContainer>

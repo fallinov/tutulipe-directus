@@ -53,6 +53,10 @@ services:
       CORS_ENABLED: "true"
       CORS_ORIGIN: ${CORS_ORIGIN:-true}
 
+      # Visual Editor — autoriser l'iframe du frontend
+      CONTENT_SECURITY_POLICY_DIRECTIVES__FRAME_SRC: ${FRAME_SRC:-http://localhost:3000 http://localhost:3099}
+      CACHE_AUTO_PURGE: "true"
+
       # Logs
       LOG_LEVEL: ${LOG_LEVEL:-info}
       LOG_STYLE: pretty
