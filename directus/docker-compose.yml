@@ -49,9 +49,9 @@ services:
       # URL publique
       PUBLIC_URL: ${PUBLIC_URL:-http://localhost:8055}
 
-      # CORS — autoriser le frontend Nuxt
+      # CORS — autoriser le frontend Nuxt (tous les ports en dev)
       CORS_ENABLED: "true"
-      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:3000}
+      CORS_ORIGIN: ${CORS_ORIGIN:-true}
 
       # Logs
       LOG_LEVEL: ${LOG_LEVEL:-info}

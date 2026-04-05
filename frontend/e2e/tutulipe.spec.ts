@@ -137,6 +137,38 @@ test.describe('Tutulipe — Navigation et contenu', () => {
     await expect(page.locator('h1')).toContainText('Nos articles')
   })
 
+  test('navigation client-side charge le contenu sans refresh', async ({ page }) => {
+    await page.goto(BASE)
+    await expect(page.locator('h1')).toContainText('Tutulipe')
+
+    // Naviguer vers Articles via le header
+    await page.getByRole('link', { name: 'Articles' }).first().click()
+    await expect(page).toHaveURL(`${BASE}/articles`)
+    await expect(page.getByText('Les fleurs de printemps')).toBeVisible()
+
+    // Naviguer vers Produits
+    await page.getByRole('link', { name: 'Produits' }).first().click()
+    await expect(page).toHaveURL(`${BASE}/produits`)
+    await expect(page.getByRole('main').getByText('Bouquet Éternel')).toBeVisible()
+    await expect(page.getByRole('main').getByText('65.00 CHF')).toBeVisible()
+
+    // Naviguer vers À propos
+    await page.getByRole('link', { name: 'À propos' }).first().click()
+    await expect(page).toHaveURL(`${BASE}/a-propos`)
+    await expect(page.getByText('atelier floral fondé en 2020')).toBeVisible()
+
+    // Naviguer vers Contact
+    await page.getByRole('link', { name: 'Contact' }).first().click()
+    await expect(page).toHaveURL(`${BASE}/contact`)
+    await expect(page.getByPlaceholder('Votre nom')).toBeVisible()
+    await expect(page.getByRole('main').getByRole('link', { name: '032 422 00 00' })).toBeVisible()
+
+    // Retour à l'accueil
+    await page.getByRole('link', { name: 'Accueil' }).first().click()
+    await expect(page).toHaveURL(`${BASE}/`)
+    await expect(page.getByRole('heading', { name: 'Dernières actualités' })).toBeVisible()
+  })
+
   test('footer affiche les données du site', async ({ page }) => {
     await page.goto(BASE)
 
